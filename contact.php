@@ -8,7 +8,7 @@ include "model.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>home@writeups</title>
+    <title>contact@writeups</title>
 </head>
 <body>
     <div class="topnav">
@@ -17,7 +17,7 @@ include "model.php";
         <a href="about.php">about</a>
         <a href="contact.php">contact</a>
     </div>
-    <h1>Welcome to my blog!</h1>
-    <h2>Here you can see my projects and writeups.</h2>
+    <h1>Contact me!</h1>
+    <h2>+123 987654321</h2>
 </body>
 </html>
