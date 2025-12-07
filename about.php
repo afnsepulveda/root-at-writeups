@@ -1,22 +1,16 @@
 <?php
 include "model.php";
+$titulo = "about@writeups";
+include "header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>about@writeups</title>
-</head>
-<body>
-    <div class="topnav">
-        <h1>afonso@writeups</h1>
-        <a href="index.php">home</a>
-        <a href="about.php">about</a>
-        <a href="contact.php">contact</a>
-    </div>
-    <h1>My name is Afonso and I'm a cybersecurity enthusiast.</h1>
-</body>
-</html>
+    <section class="page-content">
+        <h1>Sobre Mim - Afonso</h1>
+        <p>O meu nome é Afonso e sou um entusiasta de cibersegurança.</p>
+        <p>Neste blog, partilho os meus projetos, estudos de caso (writeups), e pensamentos sobre o mundo da segurança informática. Acredito que a partilha de conhecimento é fundamental.</p>
+        <p>Fica à vontade para explorar e contactar!</p>
+    </section>
+
+<?php
+include "footer.php";
+?>

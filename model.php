@@ -1,11 +1,7 @@
-<?php 
+<?php
 
-/* Implementar com PDO PHP Data Objects */ 
-	
-/* Estabelecer conexão com a base de dados */    
 function estabelecerConexao()
 {
-   // Podem mais tarde passar para um ficheiro de configuração
    $hostname = 'localhost';
    $dbname = 'u506280443_afomonDB';
    $username = 'u506280443_afomondbUser';

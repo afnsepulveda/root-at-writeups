@@ -1,4 +1,5 @@
-<?php 
+<?php
+
   include 'model.php';
 
   $con = estabelecerConexao();
@@ -7,7 +8,6 @@
     echo "Conexão estabelecida com sucesso!";
   else:
     echo "Erro no estabelecimento da conexão";
-  endif;  
-
+  endif;
 
 ?>
