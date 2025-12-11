@@ -1,6 +1,6 @@
 <?php
 
-  include 'model.php';
+  include '../model.php';
 
   $con = estabelecerConexao();
 
