@@ -13,6 +13,17 @@
             <nav>
                 <a href="index.php">home</a>
                 <a href="about.php">about</a>
+                
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <?php if ($_SESSION['username'] === 'admin'): ?>
+                        <a href="create_post.php" style="color: var(--secondary-neon);">+ novo post</a>
+                    <?php endif; ?>
+                    <a href="logout.php">logout (<?= htmlspecialchars($_SESSION['username']); ?>)</a>
+                <?php else: ?>
+                    <a href="login.php">login</a>
+                    <a href="register.php">registar</a>
+                <?php endif; ?>
+                
                 <a href="contact.php">contact</a>
             </nav>
         </div>
