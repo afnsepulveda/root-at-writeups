@@ -9,23 +9,31 @@
 <body>
     <header class="header">
         <div class="topnav">
-            <h1><a href="index.php">afonso@writeups</a></h1>
-            <nav>
-                <a href="index.php">home</a>
-                <a href="about.php">about</a>
-                
+            
+            <div class="left-group">
+                <h1><a href="index.php">afonso@writeups</a></h1>
+                <nav class="main-nav">
+                    <a href="index.php">home</a>
+                    <a href="about.php">about</a>
+                    <a href="contact.php">contact</a>
+                </nav>
+            </div>
+
+            <div class="right-group">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <?php if ($_SESSION['username'] === 'admin'): ?>
-                        <a href="create_post.php" style="color: var(--secondary-neon);">+ novo post</a>
+                    <?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin'): ?>
+                        <a href="create_post.php" class="nav-btn action-btn">+ Post</a>
                     <?php endif; ?>
-                    <a href="logout.php">logout (<?= htmlspecialchars($_SESSION['username']); ?>)</a>
+                    
+                    <span class="user-badge"><i class="icon-user"></i> <?= htmlspecialchars($_SESSION['username']); ?></span>
+                    <a href="logout.php" class="nav-btn logout-btn">[ sair ]</a>
+
                 <?php else: ?>
-                    <a href="login.php">login</a>
-                    <a href="register.php">registar</a>
+                    <a href="login.php" class="nav-link">login</a>
+                    <a href="register.php" class="nav-btn register-btn">registar</a>
                 <?php endif; ?>
-                
-                <a href="contact.php">contact</a>
-            </nav>
+            </div>
+
         </div>
     </header>
     <main class="content">
