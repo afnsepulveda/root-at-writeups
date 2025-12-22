@@ -116,91 +116,67 @@ body {
     text-shadow: 0 0 5px var(--primary-dim);
 }
 
-/* --- Grupo da Direita (User & Actions) - AQUI ESTÁ A CORREÇÃO --- */
+/* --- Grupo da Direita (User & Actions) --- */
 
 .right-group {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espaço entre os elementos */
+    gap: 15px;
+    margin-top: 4px; /* Ajuste fino para alinhar horizontalmente com a esquerda */
 }
 
-/* Etiqueta do Utilizador (badge) */
-.user-badge {
-    color: var(--primary-neon);
-    font-size: 0.85em;
-    border: 1px solid var(--primary-dim);
-    padding: 5px 12px;
-    border-radius: 4px;
-    background: rgba(0, 255, 65, 0.05); /* Fundo verde muito leve */
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    box-shadow: 0 0 5px rgba(0, 255, 65, 0.1);
-}
-
-/* Estilo Base para Botões da Direita */
-.nav-btn {
-    text-decoration: none;
-    padding: 6px 12px;
-    font-size: 0.8em;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-}
-
-/* Botão Novo Post (Laranja) */
-.action-btn {
-    border-color: var(--secondary-neon);
-    color: var(--secondary-neon);
-    background-color: transparent;
-}
-
-.action-btn:hover {
-    background-color: var(--secondary-neon);
-    color: #000;
-    box-shadow: 0 0 10px var(--secondary-neon);
-}
-
-/* Botão Logout (Vermelho) */
-.logout-btn {
-    color: var(--danger-color);
-    border: 1px solid rgba(255, 68, 68, 0.3);
-}
-
-.logout-btn:hover {
-    background-color: var(--danger-color);
-    color: #fff;
-    border-color: var(--danger-color);
-    box-shadow: 0 0 10px var(--danger-color);
-}
-
-/* Links normais de Login/Registo (Visitante) */
-.nav-link {
-    color: var(--text-color);
+/* Regra Geral para Links da Direita (Mata o roxo/visited) */
+.right-group a {
+    color: var(--text-muted); /* Cor cinzenta padrão */
     text-decoration: none;
     font-size: 0.9em;
-    padding: 5px;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
-.nav-link:hover {
+/* Garante que links visitados NÃO ficam roxos */
+.right-group a:visited {
+    color: var(--text-muted);
+}
+
+/* Efeito Hover Genérico */
+.right-group a:hover {
     color: #fff;
-    text-decoration: underline;
 }
 
+/* Nome do Utilizador (admin) */
+.user-badge {
+    color: var(--text-color);
+    font-size: 0.9em;
+    padding: 0 5px;
+    /* Removemos bordas e fundos para ficar limpo */
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* Botão Novo Post */
+.action-btn:hover {
+    color: var(--secondary-neon) !important;
+    text-shadow: 0 0 8px var(--secondary-neon);
+}
+
+/* Botão Sair */
+.logout-btn:hover {
+    color: var(--danger-color) !important;
+    text-shadow: 0 0 8px var(--danger-color);
+}
+
+/* Botão Registar (Visitante) */
 .register-btn {
     border: 1px solid var(--primary-neon);
-    color: var(--primary-neon);
-    margin-left: 10px;
+    color: var(--primary-neon) !important; /* Força cor verde */
+    padding: 4px 10px;
 }
-
 .register-btn:hover {
     background-color: var(--primary-neon);
-    color: #000;
-    box-shadow: 0 0 15px var(--primary-neon);
+    color: #000 !important;
+    box-shadow: 0 0 10px var(--primary-neon);
 }
-
 
 /* --- Conteúdo Principal --- */
 
