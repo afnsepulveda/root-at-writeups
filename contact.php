@@ -1,6 +1,6 @@
 <?php
 include "model.php";
-$titulo = "contact@writeups";
+$titulo = "contacto@writeups";
 include "header.php";
 ?>
 

@@ -14,8 +14,8 @@
                 <h1><a href="index.php">afonso@writeups</a></h1>
                 <nav class="main-nav">
                     <a href="index.php">home</a>
-                    <a href="about.php">about</a>
-                    <a href="contact.php">contact</a>
+                    <a href="about.php">sobre</a>
+                    <a href="contact.php">contacto</a>
                 </nav>
             </div>
 

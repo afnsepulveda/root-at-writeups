@@ -1,6 +1,6 @@
 <?php
 include "model.php";
-$titulo = "about@writeups";
+$titulo = "sobre@writeups";
 include "header.php";
 ?>
 
