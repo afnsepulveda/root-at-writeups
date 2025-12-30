@@ -80,4 +80,55 @@ function verificarLogin($username, $password) {
     }
     return false;
 }
+
+// --- Funções de Comentários ---
+
+function adicionarComentario($postId, $userId, $conteudo) {
+    $conn = estabelecerConexao();
+    $stmt = $conn->prepare("INSERT INTO comments (post_id, user_id, conteudo, data_criacao) VALUES (?, ?, ?, NOW())");
+    return $stmt->execute([$postId, $userId, $conteudo]);
+}
+
+function obterComentariosPorPost($postId) {
+    $conn = estabelecerConexao();
+    // JOIN com users para buscar o nome de quem comentou
+    $sql = "SELECT c.*, u.username 
+            FROM comments c 
+            JOIN users u ON c.user_id = u.id 
+            WHERE c.post_id = ? 
+            ORDER BY c.data_criacao DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$postId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// --- Funções de Likes ---
+
+function alternarLike($postId, $userId) {
+    $conn = estabelecerConexao();
+    
+    // Verifica se já deu like
+    if (verificarLike($postId, $userId)) {
+        // Se já existe, remove (Dislike)
+        $stmt = $conn->prepare("DELETE FROM likes WHERE post_id = ? AND user_id = ?");
+    } else {
+        // Se não existe, adiciona (Like)
+        $stmt = $conn->prepare("INSERT INTO likes (post_id, user_id) VALUES (?, ?)");
+    }
+    return $stmt->execute([$postId, $userId]);
+}
+
+function verificarLike($postId, $userId) {
+    $conn = estabelecerConexao();
+    $stmt = $conn->prepare("SELECT 1 FROM likes WHERE post_id = ? AND user_id = ?");
+    $stmt->execute([$postId, $userId]);
+    return $stmt->fetchColumn();
+}
+
+function contarLikes($postId) {
+    $conn = estabelecerConexao();
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM likes WHERE post_id = ?");
+    $stmt->execute([$postId]);
+    return $stmt->fetchColumn();
+}
 ?>
