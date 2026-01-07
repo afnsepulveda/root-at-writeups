@@ -59,10 +59,26 @@ include "header.php";
 <section class="page-content">
     <h1><?php echo htmlspecialchars($post['titulo']); ?></h1>
     
-    <p class="post-meta" style="border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
-        <i class="icon-calendar"></i> 
-        Publicado em <?php echo date('d/m/Y H:i', strtotime($post['data_criacao'])); ?>
-    </p>
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; margin-bottom: 20px; padding-bottom: 10px;">
+        
+        <p class="post-meta" style="margin-bottom: 0; border: none;">
+            <i class="icon-calendar"></i> 
+            Publicado em <?php echo date('d/m/Y H:i', strtotime($post['data_criacao'])); ?>
+        </p>
+
+        <?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin'): ?>
+            <a href="delete_post.php?id=<?php echo $id; ?>" 
+               onclick="return confirm('Tem a certeza absoluta? Esta ação não pode ser desfeita.');"
+               style="color: var(--danger-color); font-size: 0.9em; text-decoration: none; border: 1px solid var(--danger-color); padding: 5px 10px;">
+               [ Apagar Post ]
+            </a>
+        <?php endif; ?>
+        
+    </div>
+
+    <div class="post-body">
+        <?php echo nl2br(htmlspecialchars($post['conteudo'])); ?>
+    </div>
 
     <div class="post-body">
         <?php echo nl2br(htmlspecialchars($post['conteudo'])); ?>

@@ -40,16 +40,22 @@ function obterPostPorId($id) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// NOVA: Criar Post (Apenas Admin)
+// Criar Post (Apenas Admin)
 function criarPost($titulo, $conteudo) {
     $conn = estabelecerConexao();
     $stmt = $conn->prepare("INSERT INTO posts (titulo, conteudo, data_criacao) VALUES (?, ?, NOW())");
     return $stmt->execute([$titulo, $conteudo]);
 }
 
+function apagarPost($id) {
+    $conn = estabelecerConexao();
+    $stmt = $conn->prepare("DELETE FROM posts WHERE id = ?");
+    return $stmt->execute([$id]);
+}
+
 // --- Funções de Utilizador (Auth) ---
 
-// NOVA: Registar Utilizador
+// Registar Utilizador
 function registarUtilizador($username, $password) {
     $conn = estabelecerConexao();
     // Hash da password para segurança
@@ -67,7 +73,7 @@ function registarUtilizador($username, $password) {
     }
 }
 
-// NOVA: Verificar Login
+// Verificar Login
 function verificarLogin($username, $password) {
     $conn = estabelecerConexao();
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
