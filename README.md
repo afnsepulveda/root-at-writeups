@@ -20,3 +20,27 @@ Um dos pilares deste projeto foi a implementação de medidas de segurança para
     * Configuração rigorosa do ficheiro `.gitignore` para impedir que chaves de acesso e ficheiros de configuração sensíveis sejam enviados para repositórios públicos (GitHub).
 * **Conexão Segura (PDO):**
     * Utilização de **PDO** (PHP Data Objects) para conexões à base de dados, garantindo tratamento de erros seguro (try/catch) sem expor detalhes da infraestrutura ao utilizador final.
+
+## Implementação Técnica de Segurança
+
+Para além da infraestrutura, o código-fonte inclui mecanismos de defesa ativos contra as vulnerabilidades web mais comuns (OWASP Top 10):
+
+### Prevenção de SQL Injection (SQLi)
+Todas as interações com a base de dados são estritamente realizadas através de **Prepared Statements**.
+* **Implementação:** Ao separar a estrutura da query SQL dos dados fornecidos pelo utilizador, o motor da base de dados trata o *input* estritamente como dados literais e não como código executável.
+* **Impacto:** Esta prática neutraliza eficazmente tentativas de injeção de comandos SQL maliciosos (ex: `' OR '1'='1`) nos formulários de login, registo e pesquisa.
+
+### Mitigação de Cross-Site Scripting (XSS)
+O projeto aplica uma política rigorosa de "Output Encoding" em todas as áreas onde conteúdo gerado pelo utilizador é exibido.
+* **Implementação:** Antes de qualquer dado ser renderizado no navegador (sejam comentários, nomes de utilizador ou títulos de posts), é processado pela função `htmlspecialchars()`.
+* **Impacto:** Caracteres especiais que poderiam ser interpretados como HTML ou JavaScript (como `<script>`) são convertidos em entidades inofensivas, impedindo a execução de scripts maliciosos no cliente (*Stored XSS*).
+
+### Criptografia e Armazenamento de Credenciais
+A segurança das palavras-passe segue os padrões modernos de criptografia, garantindo que credenciais nunca são armazenadas em texto limpo (*plain-text*).
+* **Hashing:** No ato do registo, as palavras-passe são processadas pela função `password_hash()`, que aplica um algoritmo de hash forte (Bcrypt) e gera um *salt* aleatório automaticamente.
+* **Validação:** A autenticação utiliza `password_verify()`, prevenindo ataques de *timing* e garantindo que a comparação é feita de forma segura contra o hash armazenado.
+
+### Controlo de Acesso e Gestão de Sessões
+A autorização é gerida através de sessões seguras (`$_SESSION`), com verificações explícitas de privilégios.
+* **Controlo de Rotas:** Scripts sensíveis, como a criação de novos artigos, possuem validações no início da execução. O acesso não autorizado é imediatamente bloqueado, prevenindo *Forced Browsing*.
+* **Isolamento de Funcionalidades:** Ações interativas como comentar ou dar "like" são restritas ao backend, rejeitando pedidos que não provenham de sessões autenticadas válidas.
