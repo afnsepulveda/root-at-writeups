@@ -1,4 +1,5 @@
-# [root-at-writeups](https://afomon.antrob.eu/) 
+# [root-at-writeups]
+# https://afomon.antrob.eu/
 
 Este projeto foi desenvolvido no âmbito das disciplinas de **Programação Web 2** e **Projeto Integrado 3**. O objetivo principal é a criação de uma aplicação web robusta, com foco especial na segurança da informação e boas práticas de desenvolvimento backend.
 
